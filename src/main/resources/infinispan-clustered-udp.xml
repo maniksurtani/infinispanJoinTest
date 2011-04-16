@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+   This is just a very simplistic example configuration file.  For more information, please see
+   http://docs.jboss.org/infinispan/5.0/apidocs/config.html
+
+-->
+
+<infinispan
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="urn:infinispan:config:5.0 http://www.infinispan.org/schemas/infinispan-config-5.0.xsd"
+      xmlns="urn:infinispan:config:5.0">
+
+   <global>
+      <globalJmxStatistics enabled="true" jmxDomain="Infinispan" />
+      <transport nodeName="${role}">
+         <properties>
+            <property name="configurationFile" value="jgroups-udp.xml" />
+         </properties>
+      </transport>
+   </global>
+
+   <default>
+      <locking concurrencyLevel="5000" />
+      <clustering mode="distributed">
+         <l1 enabled="false" />
+         <sync />
+      </clustering>
+   </default>
+</infinispan>
